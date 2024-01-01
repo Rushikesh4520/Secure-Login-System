@@ -19,7 +19,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
     else{
             if ($password == $cpassword){
-                $sql = "INSERT INTO `users` ( `username`, `password`, `dat`) VALUES ( '$username', '$password', current_timestamp())";
+                $hash = password_hash($password,PASSWORD_DEFAULT);
+                $sql = "INSERT INTO `users` ( `username`, `password`, `dat`) VALUES ( '$username', '$hash', current_timestamp())";
                 $result = mysqli_query($conn, $sql);
                 if ($result) {
                     $showAlert = true;
@@ -79,11 +80,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <form action="/loginsystem/signup.php" method="POST">
                 <div class="form-group">
                     <label for="username">Username</label>
-                    <input type="text" class="form-control" id="username" name="username" aria-describedby="emailHelp" placeholder="Username">
+                    <input type="text" maxlength="11" class="form-control" id="username" name="username" aria-describedby="emailHelp" placeholder="Username">
                 </div>
+
                 <div class="form-group">
                     <label for="password">Password</label>
-                    <input type="password" class="form-control" id="password" name="password" aria-describedby="emailHelp" placeholder="Password">
+                    <input type="password" maxlength="23" class="form-control" id="password" name="password" aria-describedby="emailHelp" placeholder="Password">
                 </div>
 
                 <div class="form-group">
