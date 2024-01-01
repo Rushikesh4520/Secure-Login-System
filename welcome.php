@@ -22,7 +22,15 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] != true) {
     require 'partials/_navbar.php';
     ?>
 
-    <h2 class="text-center my-3">welcome - <?php echo $_SESSION['username'] ?></h2>
+
+    <div class="container my-4">
+        <div class="alert alert-success" role="alert">
+            <h4 class="alert-heading">Welcome - <?php echo $_SESSION['username'] ?> </h4>
+            <p>Hey! How are you doing ? Welcome to iSecure. Your logged in as <?php echo $_SESSION['username'] ?> you successfully read this important alert message.</p>
+            <hr>
+            <p class="mb-0">Whenever you need to, be sure to log out <a href=" /loginsystem/logout.php">Using this link.</a></p>
+        </div>
+    </div>
 
 
 </body>
